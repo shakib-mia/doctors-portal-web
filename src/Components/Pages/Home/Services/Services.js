@@ -2,6 +2,7 @@ import React from 'react';
 import fluoride from "../../../../assets/images/fluoride.png";
 import cavity from "../../../../assets/images/cavity.png";
 import whitening from "../../../../assets/images/whitening.png";
+import Service from './Service';
 
 
 const Services = () => {
@@ -13,21 +14,9 @@ const Services = () => {
                   </div>
                   <div className='hero'>
                         <div className='hero-content flex-col lg:flex-row gap-6 text-center'>
-                              <div className='shadow-lg px-5 py-4'>
-                                    <img src={fluoride} alt="Fluoride" className='mx-auto' />
-                                    <h5 className='text-xl font-bold'>Fluoride Treatment</h5>
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, doloremque?</p>
-                              </div>
-                              <div className='shadow-lg px-5 py-4'>
-                                    <img src={cavity} alt="Fluoride" className='mx-auto' />
-                                    <h5 className='text-xl font-bold'>Cavity Filling</h5>
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, doloremque?</p>
-                              </div>
-                              <div className='shadow-lg px-5 py-4'>
-                                    <img src={whitening} alt="Fluoride" className='mx-auto' />
-                                    <h5 className='text-xl font-bold'>Teeth Whitening</h5>
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, doloremque?</p>
-                              </div>
+                              <Service image={fluoride} title="Fluoride Treatment" desc="lorem ipsum is simply dummy text"></Service>
+                              <Service image={cavity} title="Cavity Filling" desc="lorem ipsum is simply dummy text"></Service>
+                              <Service image={whitening} title="Teeth Whitening" desc="lorem ipsum is simply dummy text"></Service>
                         </div>
                   </div>
             </div>
