@@ -12,7 +12,7 @@ const Navbar = () => {
             <li><NavLink to="/login">Login</NavLink></li>
       </>
       return (
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-base-100 container mx-auto">
                   <div className="navbar block">
                         <div className="dropdown flex justify-between">
                               <Link to="/" className="btn btn-ghost normal-case text-xl lg:justify-start">Doctors Portal</Link>
