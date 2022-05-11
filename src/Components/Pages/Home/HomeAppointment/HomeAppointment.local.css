@@ -3,6 +3,7 @@ section {
       background-color: rgba(71, 80, 148, 80%);
 }
 
-img {
-      top: -17rem;
+.appointment img {
+      height: 636px;
+      top: -18rem;
 }
