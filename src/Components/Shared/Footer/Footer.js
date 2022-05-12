@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import "./Footer.css"
 
 const Footer = () => {
       return (
-            <div className='container mx-auto'>
+            <footer className='container mx-auto py-10'>
                   <div className='py-10 flex flex-wrap justify-between px-4'>
                         <div className='py-3'>
                               <h3 className='text-2xl font-bold'>SERVICES</h3>
@@ -25,7 +26,7 @@ const Footer = () => {
 
                   </div>
                   <p className='text-center py-3'>Copyright 2022 Alright Reserved</p>
-            </div>
+            </footer>
       );
 };
 

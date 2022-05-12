@@ -3,7 +3,7 @@ import treatment from "../../../../assets/images/treatment.png"
 
 const ExceptionalCare = () => {
       return (
-            <div className='container mx-auto px-24'>
+            <div className='container mx-auto'>
                   <div className="hero-content flex-col-reverse lg:flex-row gap-20">
                         <img src={treatment} className="rounded-lg shadow-2xl h-96" alt="Exceptional_Care" />
                         <div>
