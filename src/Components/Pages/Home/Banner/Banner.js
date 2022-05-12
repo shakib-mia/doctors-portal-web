@@ -6,7 +6,7 @@ const Banner = () => {
       return (
             <div className="banner container mx-auto">
                   <div className='py-20 lg:py-56'>
-                        <div className="hero-content flex-col lg:flex-row-reverse">
+                        <div className="hero-content flex-col lg:flex-row">
                               <img src={chair} className="max-w-sm rounded-lg shadow-2xl" alt="Banner" />
                               <div>
                                     <h1 className="text-5xl font-bold">Your New Smile Starts Here!</h1>
