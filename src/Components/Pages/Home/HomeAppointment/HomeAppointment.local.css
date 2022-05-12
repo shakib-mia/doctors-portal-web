@@ -4,6 +4,7 @@ section {
 }
 
 .appointment img {
+      z-index: 0;
       height: 636px;
       top: -18rem;
 }

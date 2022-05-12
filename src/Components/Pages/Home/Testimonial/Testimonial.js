@@ -5,7 +5,7 @@ import person from "../../../../assets/images/people1.png"
 const Testimonial = () => {
       return (
             <div className="relative testimonial">
-                  <div className='absolute py-16 bg-white w-full -top-48'>
+                  <div className='pt-36 bg-white w-full -top-48'>
                         <div className="container mx-auto">
                               <h6 className='text-primary font-bold text-xl'>Testimonial</h6>
                               <h3 className="text-4xl">What Our Patients Say</h3>
