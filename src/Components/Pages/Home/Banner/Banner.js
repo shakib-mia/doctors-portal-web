@@ -6,8 +6,8 @@ const Banner = () => {
       return (
             <div className="banner container mx-auto">
                   <div className='py-20 lg:py-56'>
-                        <div className="hero-content flex-col lg:flex-row">
-                              <img src={chair} className="max-w-sm rounded-lg shadow-2xl" alt="Banner" />
+                        <div className="hero-content gap-48 flex-col lg:flex-row">
+                              <img src={chair} className="max-w-sm rounded-lg shadow-2xl ml-10" alt="Banner" />
                               <div>
                                     <h1 className="text-5xl font-bold">Your New Smile Starts Here!</h1>
                                     <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
