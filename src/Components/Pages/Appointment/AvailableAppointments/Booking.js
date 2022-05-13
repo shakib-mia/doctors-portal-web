@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import BookingModal from './BookingModal';
+import React from 'react';
 
-const Booking = ({ service }) => {
+const Booking = ({ service, setTreatment }) => {
       let { name, slots } = service;
       // console.log(name)
-      const [spService, setSpService] = useState()
+      // const [spService, setSpService] = useState();
+      // const fullDate = date.getDate().toString() + '/' + date.getMonth().toString() + '/' + date.getFullYear().toString()
 
       return (
             <div className="card w-96 bg-base-100 mx-auto shadow-xl">
@@ -23,12 +23,14 @@ const Booking = ({ service }) => {
                                     htmlFor="bookingModal"
                                     className="btn btn-primary modal-button"
                                     disabled={slots.length === 0}
-                                    onClick={() => setSpService(service)}
+                                    onClick={() => {
+                                          setTreatment(service)
+                                    }}
                               >Book a slot</label>
                         </div>
                   </div>
-                  <BookingModal service={spService}></BookingModal>
-            </div>
+                  {/* <BookingModal service={spService} date={fullDate}></BookingModal> */}
+            </div >
       );
 };
 
