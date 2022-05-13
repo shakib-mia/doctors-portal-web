@@ -2,14 +2,11 @@ import React from 'react';
 
 const Booking = ({ service, setTreatment }) => {
       let { name, slots } = service;
-      // console.log(name)
-      // const [spService, setSpService] = useState();
-      // const fullDate = date.getDate().toString() + '/' + date.getMonth().toString() + '/' + date.getFullYear().toString()
 
       return (
-            <div className="card w-96 bg-base-100 mx-auto shadow-xl">
+            <div className="card w-96 bg-base-100 mx-auto shadow-xl text-center">
                   <div className="card-body">
-                        <h2 className="card-title text-secondary">{name}</h2>
+                        <h2 className="text-xl font-bold text-secondary">{name}</h2>
                         <p>
                               {
                                     slots.length ?
@@ -21,7 +18,7 @@ const Booking = ({ service, setTreatment }) => {
                         <div className="card-actions justify-center">
                               <label
                                     htmlFor="bookingModal"
-                                    className="btn btn-primary modal-button"
+                                    className="btn btn-primary btn-sm modal-button"
                                     disabled={slots.length === 0}
                                     onClick={() => {
                                           setTreatment(service)
@@ -29,7 +26,6 @@ const Booking = ({ service, setTreatment }) => {
                               >Book a slot</label>
                         </div>
                   </div>
-                  {/* <BookingModal service={spService} date={fullDate}></BookingModal> */}
             </div >
       );
 };

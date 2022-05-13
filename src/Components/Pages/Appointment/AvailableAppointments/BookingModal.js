@@ -7,6 +7,8 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
             event.preventDefault();
             const slot = event.target.slot.value;
             console.log(name, slot);
+
+            // to close the modal
             setTreatment(null)
       }
 
@@ -23,10 +25,10 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
                                           <select name='slot' className='input w-full shadow-md' id="slots">
                                                 {treatment?.slots?.map(slot => <option key={Math.random()} value={slot}>{slot}</option>)}
                                           </select>
-                                          <input className='input w-full my-5 shadow-md' type="text" name='name' placeholder='Full Name' />
-                                          <input className='input w-full my-5 shadow-md' type="text" name='phone' placeholder='Phone Number' />
-                                          <input className='input w-full my-5 shadow-md' type="email" name='email' placeholder='Email' />
-                                          <input className='input w-full my-5 shadow-md btn bg-zinc-800' type="submit" value="SUBMIT" />
+                                          <input className='input w-full my-5 drop-shadow ' type="text" name='name' placeholder='Full Name' />
+                                          <input className='input w-full my-5 drop-shadow ' type="text" name='phone' placeholder='Phone Number' />
+                                          <input className='input w-full my-5 drop-shadow ' type="email" name='email' placeholder='Email' />
+                                          <input className='input w-full my-5 drop-shadow  btn bg-zinc-800' type="submit" value="SUBMIT" />
                                     </form>
                               </div>
                         </div> : ""}
