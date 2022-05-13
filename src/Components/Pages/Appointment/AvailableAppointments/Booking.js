@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import BookingModal from './BookingModal';
 
 const Booking = ({ service }) => {
       let { _id, name, slots } = service;
-
-      const setTreatment = (service) => {
-            console.log(service);
-            <BookingModal key={_id} name={name}></BookingModal>
-      }
+      // console.log(name)
+      const [spService, setSpService] = useState()
 
       return (
             <div className="card w-96 bg-base-100 mx-auto shadow-xl">
@@ -23,12 +20,14 @@ const Booking = ({ service }) => {
                         <p>{slots.length} {slots.length > 1 ? "spaces available" : "space available. Try Another Day"}</p>
                         <div className="card-actions justify-center">
                               <label
-                                    onClick={() => setTreatment(service)}
                                     htmlFor="bookingModal"
                                     className="btn btn-primary modal-button"
-                              >open modal</label>
+                                    disabled={slots.length === 0}
+                                    onClick={() => setSpService(service)}
+                              >Book a slot</label>
                         </div>
                   </div>
+                  <BookingModal service={spService}></BookingModal>
             </div>
       );
 };
