@@ -2,7 +2,11 @@ import React from 'react';
 
 const BookingModal = ({ service }) => {
       if (service) {
-            console.log(service)
+            const selected = (option) => {
+                  const select = document.getElementById('slots');
+                  console.log(select.value)
+            }
+
             return (
                   <div>
                         <input type="checkbox" id="bookingModal" className="modal-toggle" />
@@ -10,7 +14,9 @@ const BookingModal = ({ service }) => {
                               <div className="modal-box relative">
                                     <label htmlFor="bookingModal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                                     <h3 className="text-lg font-bold">{service.name}</h3>
-                                    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                                    <select className='input w-full shadow-md' id="slots" onChange={selected}>
+                                          {service.slots.map(slot => <option value={slot}>{slot}</option>)}
+                                    </select>
                               </div>
                         </div>
                   </div>

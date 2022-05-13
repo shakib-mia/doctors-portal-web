@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import BookingModal from './BookingModal';
 
 const Booking = ({ service }) => {
-      let { _id, name, slots } = service;
+      let { name, slots } = service;
       // console.log(name)
       const [spService, setSpService] = useState()
 
