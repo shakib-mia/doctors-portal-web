@@ -1,15 +1,41 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import auth from '../../../firebase.init';
 import "./Navbar.css";
 
 const Navbar = () => {
+      const name = localStorage.getItem('name');
+      const googleName = localStorage.getItem("googleUser");
+
+      const handleSignOut = () => {
+            signOut(auth);
+            localStorage.removeItem('name')
+            localStorage.removeItem('googleUser')
+            window.location.reload()
+      }
+
       const menuItems = <>
             <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/about">About</NavLink></li>
             <li><NavLink to="/appointment">Appointment</NavLink></li>
             <li><NavLink to="/reviews">Reviews</NavLink></li>
             <li><NavLink to="/contact">Contact Us</NavLink></li>
-            <li><NavLink to="/login">Login</NavLink></li>
+
+            {
+                  googleName
+                        ?
+                        <span>{googleName} <button onClick={handleSignOut} className='btn btn-primary'>Log Out</button></span>
+                        :
+                        name
+                              ?
+                              name
+                              :
+                              <li>
+                                    <NavLink to="/login">Log In</NavLink>
+                              </li>
+            }
+
       </>
       return (
             <div className="navbar bg-base-100 container mx-auto">

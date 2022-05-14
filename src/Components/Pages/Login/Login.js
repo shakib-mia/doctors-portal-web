@@ -4,6 +4,7 @@ import auth from '../../../firebase.init';
 import { useForm } from "react-hook-form";
 import Loading from '../../Shared/Loading';
 import { Link } from 'react-router-dom';
+import Navbar from '../../Shared/Navbar/Navbar';
 
 const Login = () => {
       const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
@@ -23,6 +24,9 @@ const Login = () => {
 
       if (googleUser || user) {
             console.log(googleUser || user);
+            localStorage.setItem("name", user?.user.email)
+            localStorage.setItem("googleUser", googleUser?.user.displayName);
+            window.location.reload()
       }
 
       if (error || googleError) {

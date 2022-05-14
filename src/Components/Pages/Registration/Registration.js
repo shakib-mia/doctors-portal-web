@@ -3,17 +3,20 @@ import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from "react-fi
 import auth from '../../../firebase.init';
 import { useForm } from "react-hook-form";
 import Loading from '../../Shared/Loading';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Registration = () => {
       const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
       const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
+
+      const navigate = useNavigate()
 
       let signInErrorMessage;
 
       const { register, formState: { errors }, handleSubmit } = useForm();
       const onSubmit = data => {
             console.log(data);
+            localStorage.setItem("userName", data.name)
             createUserWithEmailAndPassword(data.email, data.password)
       };
 
@@ -23,6 +26,9 @@ const Registration = () => {
 
       if (googleUser || user) {
             console.log(googleUser || user);
+            localStorage.setItem("name", user?.user.email)
+            localStorage.setItem("googleUser", googleUser?.user.displayName);
+            navigate(localStorage.getItem("path") ? localStorage.getItem("path") : "/")
       }
 
       if (error || googleError) {
@@ -111,7 +117,9 @@ const Registration = () => {
 
                               <div className="divider">OR</div>
                               <button
-                                    onClick={() => signInWithGoogle()}
+                                    onClick={() => {
+                                          signInWithGoogle();
+                                    }}
                                     className='btn btn-outline'
                               >Continue with google</button>
                         </div>
