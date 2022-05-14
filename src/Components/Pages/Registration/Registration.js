@@ -113,12 +113,13 @@ const Registration = () => {
                                     <input className='btn w-full max-w-xs' type="submit" value="Register" />
                               </form>
 
-                              <p className='text-center'>Already A Member? <Link className='text-green-500 underline hover:no-underline' to="/register">Log in</Link></p>
+                              <p className='text-center'>Already A Member? <Link className='text-green-500 underline hover:no-underline' to="/login">Log in</Link></p>
 
                               <div className="divider">OR</div>
                               <button
                                     onClick={() => {
                                           signInWithGoogle();
+                                          window.location.reload();
                                     }}
                                     className='btn btn-outline'
                               >Continue with google</button>

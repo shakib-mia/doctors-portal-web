@@ -1,15 +1,49 @@
+import { format } from 'date-fns';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from "../../../../firebase.init"
+import { toast } from "react-toastify"
 
 const BookingModal = ({ treatment, date, setTreatment }) => {
-      const { name } = treatment
+      const { _id, name, slots } = treatment;
+      // const { loading, error } = useAuthState(auth);
+      const { email, loading, error, displayName } = useAuthState(auth)[0];
+      const formattedDate = format(date, "pp")
+      console.log(email)
 
       const handleBooking = event => {
             event.preventDefault();
             const slot = event.target.slot.value;
-            console.log(name, slot);
 
-            // to close the modal
-            setTreatment(null)
+
+            const booking = {
+                  treatmentId: _id,
+                  treatmentName: name,
+                  date: formattedDate,
+                  slot,
+                  patient: email,
+                  patientName: displayName
+            }
+
+            fetch('http://localhost:5000/booking', {
+                  method: "POST",
+                  headers: {
+                        "content-type": "application/json"
+                  },
+                  body: JSON.stringify(booking)
+            })
+                  .then(res => res.json())
+                  .then(data => {
+                        if (data.success) {
+                              toast(`Appointment is set ${formattedDate} at ${slot}`)
+                        }
+                        else {
+                              toast("Allready have an appointment")
+                        }
+
+                        // to close the modal
+                        setTreatment(null)
+                  })
       }
 
       if (treatment) {
@@ -25,9 +59,9 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
                                           <select name='slot' className='input w-full shadow-md' id="slots">
                                                 {treatment?.slots?.map(slot => <option key={Math.random()} value={slot}>{slot}</option>)}
                                           </select>
-                                          <input className='input w-full my-5 drop-shadow ' type="text" name='name' placeholder='Full Name' />
+                                          <input className='input w-full my-5 drop-shadow ' type="text" name='name' value={displayName} disabled />
                                           <input className='input w-full my-5 drop-shadow ' type="text" name='phone' placeholder='Phone Number' />
-                                          <input className='input w-full my-5 drop-shadow ' type="email" name='email' placeholder='Email' />
+                                          <input className='input w-full my-5 drop-shadow ' type="email" name='email' value={email} disabled />
                                           <input className='input w-full my-5 drop-shadow  btn bg-zinc-800' type="submit" value="SUBMIT" />
                                     </form>
                               </div>
