@@ -4,13 +4,11 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from "../../../../firebase.init"
 import { toast } from "react-toastify"
 
-const BookingModal = ({ treatment, date, setTreatment }) => {
+const BookingModal = ({ treatment, date, setTreatment, refetch }) => {
       const { _id, name, slots } = treatment;
       // const { loading, error } = useAuthState(auth);
       const { email, loading, error, displayName } = useAuthState(auth)[0];
-      const formattedDate = format(date, "pp")
-      console.log(email)
-
+      const formattedDate = format(date, "PP");
       const handleBooking = event => {
             event.preventDefault();
             const slot = event.target.slot.value;
@@ -25,7 +23,7 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
                   patientName: displayName
             }
 
-            fetch('http://localhost:5000/booking', {
+            fetch('http://localhost:4000/booking', {
                   method: "POST",
                   headers: {
                         "content-type": "application/json"
@@ -42,6 +40,7 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
                         }
 
                         // to close the modal
+                        refetch();
                         setTreatment(null)
                   })
       }
@@ -55,7 +54,7 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
                                     <form onSubmit={handleBooking} className="modal-box relative">
                                           <label htmlFor="bookingModal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                                           <h3 className="text-lg font-bold">{treatment?.name}</h3>
-                                          <input className='input w-full shadow-md my-5' type="text" value={date} disabled />
+                                          <input className='input w-full shadow-md my-5' type="text" value={formattedDate} disabled />
                                           <select name='slot' className='input w-full shadow-md' id="slots">
                                                 {treatment?.slots?.map(slot => <option key={Math.random()} value={slot}>{slot}</option>)}
                                           </select>
